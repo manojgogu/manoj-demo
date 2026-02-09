@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCare - Smart Crop Disease Detection</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-leaf"></i> AgriCare
+            </a>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h1>Protect Your Crops with AI</h1>
+                <p>Instantly detect diseases and get expert treatment recommendations. Upload a photo of your crop to
+                    get started.</p>
+                <a href="#upload-section" class="btn btn-primary">Try Now</a>
+            </div>
+        </section>
+
+        <section id="upload-section" class="upload-section">
+            <div class="container">
+                <div class="upload-card" id="drop-zone">
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                        <h3>Drag & Drop or Click to Upload</h3>
+                        <p>Supported formats: JPG, PNG, JPEG</p>
+                    </div>
+                </div>
+
+                <div class="preview-container hidden" id="preview-container">
+                    <img id="image-preview" src="" alt="Preview">
+                    <div class="loading-overlay hidden" id="loading-overlay">
+                        <div class="spinner"></div>
+                        <p>Analyzing...</p>
+                    </div>
+                </div>
+
+                <div class="results-container hidden" id="results-container">
+                    <div class="result-card success">
+                        <div class="result-header">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <h2>Analysis Complete</h2>
+                        </div>
+                        <div class="result-body">
+                            <div class="disease-info">
+                                <h3>Detected Disease: <span id="disease-name">loading...</span></h3>
+                                <p class="confidence">Confidence: <span id="confidence-score">0%</span></p>
+                            </div>
+                            <div class="recommendation">
+                                <h4>Recommended Action:</h4>
+                                <p id="recommendation-text">loading...</p>
+                            </div>
+                        </div>
+                        <button id="reset-btn" class="btn btn-secondary">Analyze Another</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
