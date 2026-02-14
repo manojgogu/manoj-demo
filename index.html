@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="background-globes">
         <div class="globe globe-1"></div>
@@ -35,13 +37,16 @@
         <section id="home" class="active-section fade-in">
             <div class="hero glass-panel">
                 <h1>Report Incidents Securely & Anonymously</h1>
-                <p>Empowering citizens with a seamless, digital platform for filing police complaints and tracking their progress in real-time.</p>
+                <p>Empowering citizens with a seamless, digital platform for filing police complaints and tracking their
+                    progress in real-time.</p>
                 <div class="hero-actions">
-                    <button class="btn btn-primary" onclick="navigateTo('complaint')">File a Complaint <i class="fas fa-arrow-right"></i></button>
-                    <button class="btn btn-secondary" onclick="navigateTo('status')">Track Status <i class="fas fa-search"></i></button>
+                    <button class="btn btn-primary" onclick="navigateTo('complaint')">File a Complaint <i
+                            class="fas fa-arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="navigateTo('status')">Track Status <i
+                            class="fas fa-search"></i></button>
                 </div>
             </div>
-            
+
             <div class="features-grid">
                 <div class="feature-card glass-panel delay-1">
                     <i class="fas fa-user-secret"></i>
@@ -96,13 +101,14 @@
                     </div>
                     <div class="form-group">
                         <label for="incidentDescription">Description</label>
-                        <textarea id="incidentDescription" rows="5" placeholder="Describe the incident in detail..." required></textarea>
+                        <textarea id="incidentDescription" rows="5" placeholder="Describe the incident in detail..."
+                            required></textarea>
                     </div>
                     <div class="form-group file-uplaod">
                         <label for="evidence">Upload Evidence (Images/Videos/Docs)</label>
                         <input type="file" id="evidence" multiple>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary width-full">Submit Complaint</button>
                 </form>
             </div>
@@ -116,7 +122,7 @@
                     <input type="text" id="trackingId" placeholder="Enter Complaint ID (e.g., CMP-123456)">
                     <button onclick="trackComplaint()" class="btn btn-primary">Track</button>
                 </div>
-                
+
                 <div id="statusResult" class="status-result hidden">
                     <h3>Complaint Status</h3>
                     <div class="status-card">
@@ -167,10 +173,9 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 CitizenSecure. All Rights Reserved.</p>
-    </footer>
+
 
     <script src="script.js"></script>
 </body>
+
 </html>
