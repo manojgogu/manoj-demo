@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CitizenSecure - Police Complaint System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="navbar glass">
+        <div class="logo">
+            <i class="fas fa-shield-alt"></i> CitizenSecure
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active" data-target="home">Home</a></li>
+            <li><a href="#" data-target="complaint">File Complaint</a></li>
+            <li><a href="#" data-target="status">Track Status</a></li>
+            <li><a href="#" data-target="contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main id="app-content">
+        <!-- Home Section -->
+        <section id="home" class="active-section fade-in">
+            <div class="hero glass-panel">
+                <h1>Report Incidents Securely & Anonymously</h1>
+                <p>Empowering citizens with a seamless, digital platform for filing police complaints and tracking their progress in real-time.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="navigateTo('complaint')">File a Complaint <i class="fas fa-arrow-right"></i></button>
+                    <button class="btn btn-secondary" onclick="navigateTo('status')">Track Status <i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-panel delay-1">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Anonymous Reporting</h3>
+                    <p>Protect your identity while reporting sensitive issues to the authorities.</p>
+                </div>
+                <div class="feature-card glass-panel delay-2">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Quick Action</h3>
+                    <p>Direct integration with local police dispatch systems for faster response times.</p>
+                </div>
+                <div class="feature-card glass-panel delay-3">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Digital Evidence</h3>
+                    <p>Upload photos, videos, and documents securely as evidence for your case.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Complaint Section -->
+        <section id="complaint" class="hidden-section">
+            <div class="form-container glass-panel">
+                <h2>File a New Complaint</h2>
+                <form id="complaintForm">
+                    <div class="form-group">
+                        <label for="complainantName">Full Name (Optional)</label>
+                        <input type="text" id="complainantName" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number</label>
+                        <input type="tel" id="contactNumber" placeholder="Enter your mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentType">Incident Type</label>
+                        <select id="incidentType" required>
+                            <option value="" disabled selected>Select Incident Type</option>
+                            <option value="Theft">Theft / Burglary</option>
+                            <option value="Cybercrime">Cybercrime / Online Fraud</option>
+                            <option value="Harassment">Harassment / Stalking</option>
+                            <option value="Assault">Assault / Physical Violence</option>
+                            <option value="Traffic">Traffic Violation</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentDate">Date & Time of Incident</label>
+                        <input type="datetime-local" id="incidentDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentLocation">Location</label>
+                        <input type="text" id="incidentLocation" placeholder="Enter detailed location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentDescription">Description</label>
+                        <textarea id="incidentDescription" rows="5" placeholder="Describe the incident in detail..." required></textarea>
+                    </div>
+                    <div class="form-group file-uplaod">
+                        <label for="evidence">Upload Evidence (Images/Videos/Docs)</label>
+                        <input type="file" id="evidence" multiple>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary width-full">Submit Complaint</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Status Section -->
+        <section id="status" class="hidden-section">
+            <div class="status-container glass-panel">
+                <h2>Track Your Complaint</h2>
+                <div class="search-box">
+                    <input type="text" id="trackingId" placeholder="Enter Complaint ID (e.g., CMP-123456)">
+                    <button onclick="trackComplaint()" class="btn btn-primary">Track</button>
+                </div>
+                
+                <div id="statusResult" class="status-result hidden">
+                    <h3>Complaint Status</h3>
+                    <div class="status-card">
+                        <div class="status-header">
+                            <span class="id-label">ID: <span id="resId"></span></span>
+                            <span class="status-badge" id="resStatus">Pending</span>
+                        </div>
+                        <p><strong>Type:</strong> <span id="resType"></span></p>
+                        <p><strong>Date:</strong> <span id="resDate"></span></p>
+                        <div class="progress-track">
+                            <div class="step active">Submitted</div>
+                            <div class="step" id="stepReview">Under Review</div>
+                            <div class="step" id="stepAction">Action Taken</div>
+                            <div class="step" id="stepResolved">Resolved</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="hidden-section">
+            <div class="contact-container glass-panel">
+                <h2>Emergency Contacts</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Police Control Room</h3>
+                        <p class="emergency-number">100</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-ambulance"></i>
+                        <h3>Ambulance</h3>
+                        <p class="emergency-number">102</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-fire-extinguisher"></i>
+                        <h3>Fire Brigade</h3>
+                        <p class="emergency-number">101</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-users-cog"></i>
+                        <h3>Cyber Crime Helpline</h3>
+                        <p class="emergency-number">1930</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CitizenSecure. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
